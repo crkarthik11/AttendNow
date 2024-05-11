@@ -11,6 +11,7 @@
    - To Build a Gradle project, use the `./gradlew build` command:
      ```
      ./gradlew build
+     gradlew build
      ```
 
 3. **Import into IDE**:
