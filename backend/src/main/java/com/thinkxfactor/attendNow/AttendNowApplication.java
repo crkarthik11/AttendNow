@@ -29,4 +29,10 @@ class TestController {
 	public String test() {
 		return "Hello from test method!!";
 	}
+
+	public String login(String username, String password) {
+		// Logic for login
+		return "Login Successful";
+		// return "Login Failed";
+	}
 }
