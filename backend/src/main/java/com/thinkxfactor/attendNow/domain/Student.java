@@ -1,20 +1,15 @@
 package com.thinkxfactor.attendNow.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tbl_students")
+@Table(name = "tbl_student")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "name")
     private String name;
 
@@ -42,9 +37,10 @@ public class Student {
     @Column(name = "zipcode")
     private String zipcode;
 
+    @Column(name = "dob")
     private String dob;
-    // private int age;
-    // private Integer id;
+
+    private int age;
 
     public Student() {
     }
@@ -141,6 +137,14 @@ public class Student {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
 }

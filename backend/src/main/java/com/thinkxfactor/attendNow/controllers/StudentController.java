@@ -6,14 +6,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.thinkxfactor.attendNow.domain.Student;
+import com.thinkxfactor.attendNow.repositories.StudentRepository;
 
 @RestController
 @RequestMapping("/api/student")
 public class StudentController {
 
     private List<Student> studentsDb = new ArrayList<>();
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     // @GetMapping("/hello")
     // public String hello() {
@@ -103,15 +108,14 @@ public class StudentController {
     // Create Student
     @PostMapping("/add")
     public Student addStudent(@RequestBody Student student) {
-        student.setId((long) (studentsDb.size() + 1));
-        studentsDb.add(student);
-        return student;
+        Student persistedStudent = studentRepository.saveAndFlush(student);
+        return persistedStudent;
     }
 
     // Read Students
     @GetMapping("/getAll")
     public List<Student> getAllStudents() {
-        return studentsDb;
+        return studentRepository.findAll();
     }
 
     // Update Student
